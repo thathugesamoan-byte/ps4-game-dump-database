@@ -3,7 +3,7 @@
 **Reviewed:** 2026-11-21. **Games:** 18. This is the first page to consult before dumping. Click a game for its source links, caveats, and repackaging notes. For coding agents: follow [research protocol](../docs/RESEARCH-PROTOCOL.md), then the linked guide.
 
 ## Read this first
-- **Mode to try** = provisional recommendation, **not** a confirmed CUSA-specific success. `Dump All` is the generic starting point for standard base+patch installations, **not proof of the best method for every title**.
+- **Mode to try** = exact ItemzFlow menu option(s), provisional recommendation, **not** a confirmed CUSA-specific success. `Dump All` is the generic starting point for standard base+patch installations, **not proof of the best method for every title**.
 - **Documented successful dump** = direct evidence that ItemzFlow completed dumping this exact CUSA with the stated mode. **Not verified** means evidence is insufficient; it does not mean the game cannot be dumped.
 - **Documented working backup** = source-backed PKG build, validation, PS4 installation and launch. A PKG file alone does not qualify.
 - **Retail update** = whether to install a retail patch **before** dumping. **Unknown** means do not automatically update. Verify CUSA, firmware, patch dependencies, and title-specific success first.
@@ -15,7 +15,7 @@
 |---|---|---|---|---|---|---|
 | [Minecraft](CUSA00744.md) | `CUSA00744` | Dump All* | Conditional | **Not verified** | **Not verified** | **Yes** |
 | [The Forest](CUSA10518.md) | `CUSA10518` | Dump Base Game Only* | Conditional | **Not verified** | **Not verified** | **Yes** |
-| [Crash Bandicoot N. Sane Trilogy](CUSA07402.md) | `CUSA07402` | Separate base + patch* | Conditional; 1.07 candidate | **Not verified** | **Not verified** | **Yes** |
+| [Crash Bandicoot N. Sane Trilogy](CUSA07402.md) | `CUSA07402` | Dump Base Game Only + Dump Patch Only* | Conditional; 1.07 candidate | **Not verified** | **Not verified** | **Yes** |
 | [Jak 3](CUSA07841.md) | `CUSA07841` | Dump Base Game Only* | No verified update | **Not verified** | **Not verified** | **Yes** |
 | [Days Gone](CUSA08966.md) | `CUSA08966` | Remaster Only if combined; else Dump All* | Conditional | **Not verified** | **Not verified** | **Yes** |
 | [God of War](CUSA07408.md) | `CUSA07408` | Dump All* | Unknown | **Not verified** | **Not verified** | **Yes** |
@@ -37,7 +37,7 @@
 ## How to use this list
 1. Find the CUSA and open the game guide.
 2. Read the **QUICK DECISION** at the top. If the retail-update decision is Unknown/Conditional, **do not install a patch solely on this guide's authority**.
-3. If preserving DLC, investigate `Dump DLC Only` for content not loaded by `Dump All`. `Dump All + GP4FV` is a verification dump, not the default packaging GP4.
+3. If preserving DLC, investigate `Dump DLC Only` for content not loaded by `Dump All`. `Dump all + GPV4` is a verification dump, not the default packaging GP4.
 4. Do not treat a completed dump as a playable backup. Build and validate on a protected copy; any real console testing requires separate authorization.
 
 ## Evidence and next research priorities
@@ -89,3 +89,6 @@ Follow [the evidence-based elimination workflow](../docs/ELIMINATION-WORKFLOW.md
 ## Supplementary-source audit integration — 2026-11-21
 
 The [source catalog](../docs/RESEARCH-SOURCES.md#targeted-supplementary-source-audit--2026-11-21) now includes Al-Azif dumper-testing, OpenOrbis LibOrbisPkg, PKG-format references, ShadPKG, shadPS4 diagnostics and the official ItemzFlow Discord as a **not-yet-audited message channel**. [LibOrbisPkg #26](https://github.com/OpenOrbis/LibOrbisPkg/issues/26) (PlayGo build exception) and [#7](https://github.com/OpenOrbis/LibOrbisPkg/issues/7) (sc0 duplication) are **general builder-stage leads**, not new exact-CUSA exclusions. God of War's missing-language warning gains general upstream context; The Forest/Crash trophy and packaging issues gain investigation references. **No recommendation was promoted to proven and no console-install success status changed.**
+
+
+**Menu-label transcription note:** The six labels in the operator-supplied ItemzFlow menu are `Dump All`, `Dump all + GPV4`, `Dump Base Game Only`, `Dump Patch Only`, `Dump Remaster Only`, and `Dump DLC Only`. The spelling `GPV4` is **operator-supplied, not independently verified against a screenshot or the installed ItemzFlow build**; earlier project documents used `GP4FV`. Do not infer that these are different features without checking the installed UI. Multiple options joined by `+` in the index mean **separate menu actions**, not a new combined menu option.
