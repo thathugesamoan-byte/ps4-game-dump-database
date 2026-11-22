@@ -14,7 +14,7 @@
 - **Package structure and target firmware:** Unknown
 
 ## Preferred ItemzFlow settings
-- **Exact menu option:** Unknown (Dump All / Dump all + GPV4 / Dump Base Game Only / Dump Patch Only / Dump Remaster Only / Dump DLC Only)
+- **Exact menu option:** Unknown (Dump All / Dump all + GP4FV / Dump Base Game Only / Dump Patch Only / Dump Remaster Only / Dump DLC Only)
 - **Update retail game before dumping?:** Unknown (Yes / No / Conditional / Unknown)
 - **Recommended retail update version:** Unknown
 - **Version and firmware compatibility evidence:** Unknown
@@ -71,6 +71,7 @@ Follow [the evidence-based elimination workflow](../docs/ELIMINATION-WORKFLOW.md
 **Do not infer a failure from missing success reports.** A failure of one packaging configuration does not invalidate the dumped files or all ItemzFlow modes. Record exact matching conditions and any subsequent fix before excluding a method. When no reinstall is proven, choose a clearly **PROVISIONAL** `TRY FIRST` from the non-eliminated candidates, with a specific error-triggered `FALLBACK` and the next evidence needed. See [ELIMINATION-WORKFLOW.md](../docs/ELIMINATION-WORKFLOW.md).
 
 
-## Exact ItemzFlow menu labels (operator transcription; GPV4 spelling pending UI verification)
+## Exact ItemzFlow menu labels (operator-confirmed)
 
-Use only these strings when naming a selectable mode: `Dump All`; `Dump all + GPV4`; `Dump Base Game Only`; `Dump Patch Only`; `Dump Remaster Only`; `Dump DLC Only`. When two operations are required, list them as two separately selected options. Do not invent a combined option such as “Separate base + patch.” The previous label `Dump All + GP4FV` differs from the supplied transcription; verify the actual installed UI before declaring which spelling is authoritative.
+Use only these strings when naming a selectable mode: `Dump All`; `Dump all + GP4FV`; `Dump Base Game Only`; `Dump Patch Only`; `Dump Remaster Only`; `Dump DLC Only`. When two operations are required, list them as two separately selected options. Do not invent a combined option such as “Separate base + patch.”
+
