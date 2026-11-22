@@ -26,3 +26,7 @@ Markdown-only advisory library; one `CUSA12345.md` per game. Guides cannot autho
 ## Ranked methods and negative evidence
 
 Follow [the evidence-based elimination workflow](ELIMINATION-WORKFLOW.md). For each game, distinguish **TRY FIRST**, **FALLBACK**, **AVOID** (with exact tested conditions), and **UNRESOLVED**. Lack of a documented success is **not** proof of failure. A failed packaging configuration must not be used to rule out an ItemzFlow dumping mode. Update the decision and source evidence after each relevant test or firsthand report.
+
+## Mandatory negative-evidence pass
+
+Before finalizing `TRY FIRST`, perform the [failure-first elimination pass](ELIMINATION-WORKFLOW.md): inspect exact-CUSA and title-level failed attempts, upstream bugs, release fixes and follow-up retests. Record failures even when no successful repackaged game can be found. Separate a dump-stage failure from GP4, builder, static validation and console-install failures. For each exclusion specify its conditions and direct source; for uncertain or different-CUSA evidence use `CAUTION`, not `ELIMINATE`. A no-result search excludes nothing. Rank remaining candidates provisionally, and specify a stop/change trigger rather than repeating a known failed combination.
