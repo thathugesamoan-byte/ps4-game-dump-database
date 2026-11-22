@@ -78,3 +78,33 @@ These findings are new diagnostic evidence, **not proof that the corresponding f
 ### Issue/PR verification checklist
 
 Before promoting an issue report to a recommendation, inspect the **original body and follow-up comments**; for a proposed fix verify whether the PR was merged, which releases contain it, the game/CUSA tested, and the highest outcome stage demonstrated. In each guide mark `applies directly to this CUSA`, `same title, CUSA unknown`, or `general diagnostic only`. A locally patched build is not a released fix. Do not repeat identical source catalogs in every guide.
+
+## Targeted supplementary-source audit — 2026-11-21
+
+The following sources are **diagnostic references**, not evidence of a successful ItemzFlow dump or working reinstall for any of the 18 tracked CUSA IDs. Apply [scoped elimination rules](ELIMINATION-WORKFLOW.md): match stage, CUSA, versions, conditions, and later fixes before excluding a configuration.
+
+| Source | Use in failure-first research | Evidence boundary |
+|---|---|---|
+| [Al-Azif dumper-testing](https://github.com/Al-Azif/dumper-testing) | Investigate incomplete installations, missing language/disc assets, dumper hangs, and historical implementation limitations | Upstream/general behavior; not CUSA07408 proof or proof a fix shipped in ItemzFlow |
+| [OpenOrbis LibOrbisPkg](https://github.com/OpenOrbis/LibOrbisPkg) | Package builder implementation, metadata and GP4 handling; compare with [maxton LibOrbisPkg](https://github.com/maxton/LibOrbisPkg) | A builder capability is not a validated game-specific PKG |
+| [LibOrbisPkg PKG Information](https://github.com/maxton/LibOrbisPkg/wiki/PKG-Information) | Inspect PKG structure and metadata when distinguishing extraction from build errors | Reference material, not a console test |
+| [PSDevWiki PKG files](https://www.psdevwiki.com/ps4/PKG_files) | Package/PFS format diagnostics | Reference material, not game-specific outcome evidence |
+| [ShadPKG repository](https://github.com/seregonwar/ShadPKG) | Alternative extraction/patch-layout diagnostics and logging | Patch omissions may be intentional; the previously suggested HOWWORKS.md path was not confirmed accessible |
+| [shadPS4 wiki](https://github.com/shadps4-emu/shadPS4/wiki) | Emulator-oriented file/package diagnostics | Emulator compatibility is **never** proof of installation or launch on real PS4 hardware |
+| [ItemzFlow official Discord invite](https://discord.gg/GvzDdx9GTc) | Locate firsthand troubleshooting reports and ask for logs/versions | Message history **not audited**; no Discord-specific claim verified |
+
+### Concrete upstream packaging issues worth checking
+
+| Direct report | Stage / reported failure | Scoped research action |
+|---|---|---|
+| [OpenOrbis LibOrbisPkg #26](https://github.com/OpenOrbis/LibOrbisPkg/issues/26) | Reported PlayGo chunk-hash allocation exception during package building | **Builder-stage diagnostic only.** Check exact builder revision, PlayGo metadata, comments and fixes before repeating matching build; does not eliminate ItemzFlow dumping |
+| [OpenOrbis LibOrbisPkg #7](https://github.com/OpenOrbis/LibOrbisPkg/issues/7) | Reported duplicate `sc0` entries / trophy-metadata structure concerns | **Packaging/metadata diagnostic only.** Investigate sc0 layout and validation errors; does not establish cause of The Forest or Crash trophy errors |
+
+### Implications for tracked games
+
+- **God of War CUSA07408:** Al-Azif's general missing-language/disc-data behavior strengthens the *diagnostic hypothesis* from [ItemzFlow #142](https://github.com/LightningMods/Itemzflow/issues/142), but neither establishes a CUSA07408 failure or a released fix.
+- **The Forest CUSA10518 / Crash CUSA07402:** The LibOrbisPkg issue reports supply builder-stage investigation leads for trophy/sc0 and PlayGo problems. They are **not confirmed fixes or matching-CUSA failures**.
+- **Jak 3 CUSA07841 / Days Gone CUSA08966:** Package-format references may help identify builder compatibility, but no new metadata-preserving PS2 Classic build or remaster-aware CUSA08966 reinstall was demonstrated.
+- **Other tracked titles:** No new exact-CUSA method exclusions established by this source audit. **All 18 console-reinstall success statuses remain Not verified.**
+
+**Follow-up audit standard:** Read the issue body, comments, linked commits, closure and release notes before describing a workaround as fixed. Log the exact builder/version, error and stage. Do not copy an issue's diagnosis to a different game without matching evidence.
