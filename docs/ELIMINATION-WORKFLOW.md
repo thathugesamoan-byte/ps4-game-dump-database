@@ -7,7 +7,7 @@
 1. **Classify installed content:** CUSA, edition, installed retail update, DLC, firmware, and package type. Do not update just because a newer patch exists.
 2. **Rule out incompatible options:** Use source-backed limitations and actual failed tests. Record the **exact scope** (CUSA, game/patch version, ItemzFlow mode/version, builder/version, error). A builder failure cannot eliminate a dumping mode.
 3. **Rank remaining options:** **TRY FIRST** (best-supported practical choice), **FALLBACK** (reasonable alternative), **AVOID** (documented failure/inapplicable under specified conditions), **UNRESOLVED** (not enough evidence). Generic defaults are weaker than CUSA-specific user reports and actual logs.
-4. **Minimize work:** Favor a single capture if it preserves required components, but prefer separate base/patch dumps when a combined dump is known to create unpackageable inputs. Use `Dump DLC Only` for independently preserved DLC. Do not use `Dump all + GPV4` as a packaging shortcut.
+4. **Minimize work:** Favor a single capture if it preserves required components, but prefer separate base/patch dumps when a combined dump is known to create unpackageable inputs. Use `Dump DLC Only` for independently preserved DLC. Do not use `Dump all + GP4FV` as a packaging shortcut.
 5. **Test one variable at a time:** First verify source completeness; then packaging GP4; then PKG build; then static validation; finally PS4 installation/launch when separately authorized. Record results and update the guide/index. Stop repeating an unchanged failing combination.
 
 ## What counts as elimination?
