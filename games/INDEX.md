@@ -60,3 +60,11 @@
 ## Ranked methods and negative evidence
 
 Follow [the evidence-based elimination workflow](../docs/ELIMINATION-WORKFLOW.md). For each game, distinguish **TRY FIRST**, **FALLBACK**, **AVOID** (with exact tested conditions), and **UNRESOLVED**. Lack of a documented success is **not** proof of failure. A failed packaging configuration must not be used to rule out an ItemzFlow dumping mode. Update the decision and source evidence after each relevant test or firsthand report.
+
+
+## Evidence expansion — 2026-11-21 (upstream issues and retests)
+
+- **God of War (CUSA07408):** [ItemzFlow issue #142](https://github.com/LightningMods/Itemzflow/issues/142) names the **game title** among examples of missing-language-data dump hangs, but does **not state CUSA07408**. [Open fix proposal #152](https://github.com/LightningMods/Itemzflow/pull/152) was contributor-tested on a **different CUSA**, so it is not a released or CUSA07408-verified workaround. See [guide](CUSA07408.md).
+- **BO3 (CUSA02290):** A [firsthand disc-dump report](https://www.reddit.com/r/ps4homebrew/comments/1n2d982) indicates unexpectedly small output, but **does not establish CUSA, mode or successful remedy**. Treat as a completeness diagnostic, not a confirmed CUSA02290 failure. See [guide](CUSA02290.md).
+- **General upstream findings:** [Directory-creation failure with local retest](https://github.com/LightningMods/Itemzflow/issues/140#issuecomment-6229539038), [small-DLC omission report](https://github.com/LightningMods/Itemzflow/issues/138), [patch-not-detected report](https://github.com/LightningMods/Itemzflow/issues/153), and [remaster packaging maintainer caveat](https://github.com/CyB1K/PS4-Fake-PKG-Tools-3.87/issues/3#issuecomment-1019483264) inform troubleshooting but **do not validate a dumping method for any of the 18 tracked CUSA IDs**. Full evidence notes in [sources](../docs/RESEARCH-SOURCES.md).
+- **Status unchanged:** no newly proven exact-CUSA ItemzFlow dump or end-to-end working backup in this batch. All previous 18 success fields remain **Not verified**.
