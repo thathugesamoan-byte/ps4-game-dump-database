@@ -59,3 +59,22 @@ Use this compact format in each game guide:
 | [ItemzFlow missing app.pkg report (2026-03-19)](https://www.reddit.com/r/ps4homebrew/comments/1rygazx/itemzflow_dumper_problem/) | User reported dump issues and later claimed disabling background PKG installation fixed them | General anecdote; no CUSA-specific validation |
 
 **Diagnostic checklist before packaging:** check ItemzFlow version; review full dump log for incomplete/missing files; compare expected size and file count; verify any `.dumping` or completion markers are not substitutes for file integrity; check game language-data installation and DLC visibility where relevant; treat Sandbox guidance as **version-dependent**, not a blanket instruction. **Do not rewrite or bypass metadata/validation.**
+
+
+## Upstream issue and retest findings — 2026-11-21
+
+These findings are new diagnostic evidence, **not proof that the corresponding fix ships in a released ItemzFlow build**:
+
+| Source (original date) | Observed stage and conditions | Operational decision |
+|---|---|---|
+| [ItemzFlow issue #142](https://github.com/LightningMods/Itemzflow/issues/142) (2026-09-28) | Firsthand report: PSN installations with absent optional language data can hang while dumping. God of War is named among affected games; **CUSA not specified**. | If stuck on a missing language file, inspect installation completeness and the dumper log before repeating the same dump or changing packaging. |
+| [ItemzFlow PR #152](https://github.com/LightningMods/Itemzflow/pull/152) (2026-11-17; **open, unmerged as reviewed**) | Contributor-reported PS4 Pro test using a locally patched ItemzCore on **Destiny CUSA00568**: base and patch dumps finished after skipping absent language files, with selected file spot checks. No PKG build or console reinstall shown. | Technical lead for a missing-language hang; **not evidence that a released ItemzFlow version includes the fix**, and not a proven solution for God of War. |
+| [ItemzFlow issue #140 and author's retest](https://github.com/LightningMods/Itemzflow/issues/140#issuecomment-6229539038) (2026-09-25 / 2026-10-17) | For **CUSA03877** patch extraction, directory-creation errors caused an incomplete dump; reporter says a locally changed recursive directory creation operation then completed the dump. | Treat `Unable to open/create output subdirectory` as a **dump-stage** failure; do not assume MMAP patches or an alternate PKG builder are the cause. The local modification is **not confirmed upstream**. |
+| [ItemzFlow issue #138](https://github.com/LightningMods/Itemzflow/issues/138) (2026-08-20) | Firsthand **CUSA01054** small-DLC omission; reporter says a locally modified size check restored captured files. | Investigate small DLC omissions by content size and actual extracted files. Do not generalize this game-specific retest to Crash DLC. |
+| [ItemzFlow issue #153](https://github.com/LightningMods/Itemzflow/issues/153) (2026-11-18) | Reporter states **Alien: Isolation CUSA00362** installed v1.04 but `Dump Patch Only` claims no installed patch. | `No patch` can be a detection issue, not proof the retail update does not exist. |
+| [ItemzFlow issue #66](https://github.com/LightningMods/Itemzflow/issues/66) (2024-09-05) | User reports patch dumping appearing frozen after rejecting GP4 creation and instead uses separate base/patch dumps. | When progress is ambiguous, examine logs and component folders rather than assuming a completed or failed dump. |
+| [CyB1K remaster builder issue #3 and maintainer comment](https://github.com/CyB1K/PS4-Fake-PKG-Tools-3.87/issues/3#issuecomment-1019483264) (2022-01-23) | Maintainer says remaster packages can be built manually but warns that subsequent patch construction is problematic. | Evaluate remaster-aware builders against **patchability** as well as build success; do not suggest falsifying metadata to force a regular base build. |
+
+### Issue/PR verification checklist
+
+Before promoting an issue report to a recommendation, inspect the **original body and follow-up comments**; for a proposed fix verify whether the PR was merged, which releases contain it, the game/CUSA tested, and the highest outcome stage demonstrated. In each guide mark `applies directly to this CUSA`, `same title, CUSA unknown`, or `general diagnostic only`. A locally patched build is not a released fix. Do not repeat identical source catalogs in every guide.
