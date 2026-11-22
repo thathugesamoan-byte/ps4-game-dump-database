@@ -85,3 +85,7 @@ Follow [the evidence-based elimination workflow](../docs/ELIMINATION-WORKFLOW.md
 | Other 11 guides | No matching failed mode documented in existing research | **UNTESTED**, retain provisional choices |
 
 **General packaging restriction:** GP4FV verification projects are not default packaging GP4s; this does not imply `Dump All` itself fails. All 18 game-specific end-to-end success fields remain **Not verified**. The next research pass must independently inspect original reports, follow-up fixes and exact-CUSA conditions before promoting a caution to an exclusion.
+
+## Supplementary-source audit integration — 2026-11-21
+
+The [source catalog](../docs/RESEARCH-SOURCES.md#targeted-supplementary-source-audit--2026-11-21) now includes Al-Azif dumper-testing, OpenOrbis LibOrbisPkg, PKG-format references, ShadPKG, shadPS4 diagnostics and the official ItemzFlow Discord as a **not-yet-audited message channel**. [LibOrbisPkg #26](https://github.com/OpenOrbis/LibOrbisPkg/issues/26) (PlayGo build exception) and [#7](https://github.com/OpenOrbis/LibOrbisPkg/issues/7) (sc0 duplication) are **general builder-stage leads**, not new exact-CUSA exclusions. God of War's missing-language warning gains general upstream context; The Forest/Crash trophy and packaging issues gain investigation references. **No recommendation was promoted to proven and no console-install success status changed.**
