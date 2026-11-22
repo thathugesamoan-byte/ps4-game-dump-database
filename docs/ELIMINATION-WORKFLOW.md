@@ -53,3 +53,26 @@
 5. General tutorials and inference: lower confidence; never present as confirmed failure or success.
 
 For source catalog and search sequence, use [RESEARCH-SOURCES.md](RESEARCH-SOURCES.md). Record negative results only after actually testing a configuration or finding a specific firsthand failure. Do not turn an unanswered search into an “avoid.”
+
+## Mandatory failure-first investigation and elimination ledger
+
+A complete reinstall is **not required** to make progress. A documented failure at any stage can prevent repeating an unchanged attempt, provided its scope is preserved.
+
+1. **Search for negative evidence before recommending a method.** Search the exact CUSA and title, then the relevant mode, update, builder, error string, upstream issues, follow-up comments, and known fixes. Include reports that end at dump, GP4, build, validation, install, or launch.
+2. **Record each distinct attempt** using the table below. Preserve original report date, direct permalink, tool/build versions, source type, and the actual observed result. Unknown fields stay `Unknown`; never fill them from a different report.
+3. **Check whether the failure is still applicable.** Compare CUSA/edition, source type, retail update, firmware, ItemzFlow version and mode, builder and GP4 configuration. Check later comments, fixes, releases, and successful retests. A fixed bug is a historical warning, not a permanent exclusion.
+4. **Apply the narrowest defensible decision:** `ELIMINATE — matching conditions` for a reproduced or sufficiently documented incompatibility; `CONDITIONAL AVOID` for a firsthand failure whose conditions match but independent corroboration is absent; `CAUTION` for different-CUSA, general, disputed or version-unknown reports; `UNTESTED` when no applicable test exists. Do not turn an anecdote into a universal prohibition.
+5. **Rank surviving choices independently by stage.** An extraction failure may eliminate that extraction configuration, not all builders. A GP4 or PKG failure may eliminate that build configuration, not the underlying dump. Select the lowest-work remaining candidate and an error-triggered fallback; label it `PROVISIONAL` unless a higher stage is actually demonstrated.
+6. **Stop and revise** when the same unchanged configuration has already failed under matching conditions. Only retry if a meaningful variable or documented fix changes; record what changed and the resulting stage.
+
+### Failure / exclusion ledger (repeat rows as necessary)
+
+| Source and report date | Applicability (exact CUSA / same title / general) | Stage and tested configuration | Observed failure and evidence quality | Later fix or retest | Decision, scope and next alternative |
+|---|---|---|---|---|---|
+| Direct permalink | CUSA, edition, retail patch, firmware | Tool versions, mode, builder/GP4 | Exact error, log or firsthand account | Verified release, local patch, unresolved or unknown | ELIMINATE / CONDITIONAL AVOID / CAUTION / UNTESTED; precise conditions and fallback |
+
+**Decision rules:** `ELIMINATE` means do not repeat **that combination**; it never means the entire game is undumpable. `CONDITIONAL AVOID` means avoid the matching configuration while seeking confirmation. `CAUTION` is not an exclusion. `UNTESTED` is not failure. A single report can support a scoped operational warning but must remain identified as single-reporter evidence. A proposed PR or locally modified build is not a released fix.
+
+### Research completion standard
+
+A game guide may be **decision-useful without a proven reinstall** if it identifies the best remaining candidate, the exact known dead ends, applicability and sources, a concrete fallback trigger, and missing validation. Do not claim a method was exhaustively eliminated merely because searches returned nothing. Update the index when a new failure changes the recommended method or fallback.
