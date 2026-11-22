@@ -59,3 +59,52 @@ Use this compact format in each game guide:
 | [ItemzFlow missing app.pkg report (2026-03-19)](https://www.reddit.com/r/ps4homebrew/comments/1rygazx/itemzflow_dumper_problem/) | User reported dump issues and later claimed disabling background PKG installation fixed them | General anecdote; no CUSA-specific validation |
 
 **Diagnostic checklist before packaging:** check ItemzFlow version; review full dump log for incomplete/missing files; compare expected size and file count; verify any `.dumping` or completion markers are not substitutes for file integrity; check game language-data installation and DLC visibility where relevant; treat Sandbox guidance as **version-dependent**, not a blanket instruction. **Do not rewrite or bypass metadata/validation.**
+
+
+## Upstream issue and retest findings — 2026-11-21
+
+These findings are new diagnostic evidence, **not proof that the corresponding fix ships in a released ItemzFlow build**:
+
+| Source (original date) | Observed stage and conditions | Operational decision |
+|---|---|---|
+| [ItemzFlow issue #142](https://github.com/LightningMods/Itemzflow/issues/142) (2026-09-28) | Firsthand report: PSN installations with absent optional language data can hang while dumping. God of War is named among affected games; **CUSA not specified**. | If stuck on a missing language file, inspect installation completeness and the dumper log before repeating the same dump or changing packaging. |
+| [ItemzFlow PR #152](https://github.com/LightningMods/Itemzflow/pull/152) (2026-11-17; **open, unmerged as reviewed**) | Contributor-reported PS4 Pro test using a locally patched ItemzCore on **Destiny CUSA00568**: base and patch dumps finished after skipping absent language files, with selected file spot checks. No PKG build or console reinstall shown. | Technical lead for a missing-language hang; **not evidence that a released ItemzFlow version includes the fix**, and not a proven solution for God of War. |
+| [ItemzFlow issue #140 and author's retest](https://github.com/LightningMods/Itemzflow/issues/140#issuecomment-6229539038) (2026-09-25 / 2026-10-17) | For **CUSA03877** patch extraction, directory-creation errors caused an incomplete dump; reporter says a locally changed recursive directory creation operation then completed the dump. | Treat `Unable to open/create output subdirectory` as a **dump-stage** failure; do not assume MMAP patches or an alternate PKG builder are the cause. The local modification is **not confirmed upstream**. |
+| [ItemzFlow issue #138](https://github.com/LightningMods/Itemzflow/issues/138) (2026-08-20) | Firsthand **CUSA01054** small-DLC omission; reporter says a locally modified size check restored captured files. | Investigate small DLC omissions by content size and actual extracted files. Do not generalize this game-specific retest to Crash DLC. |
+| [ItemzFlow issue #153](https://github.com/LightningMods/Itemzflow/issues/153) (2026-11-18) | Reporter states **Alien: Isolation CUSA00362** installed v1.04 but `Dump Patch Only` claims no installed patch. | `No patch` can be a detection issue, not proof the retail update does not exist. |
+| [ItemzFlow issue #66](https://github.com/LightningMods/Itemzflow/issues/66) (2024-09-05) | User reports patch dumping appearing frozen after rejecting GP4 creation and instead uses separate base/patch dumps. | When progress is ambiguous, examine logs and component folders rather than assuming a completed or failed dump. |
+| [CyB1K remaster builder issue #3 and maintainer comment](https://github.com/CyB1K/PS4-Fake-PKG-Tools-3.87/issues/3#issuecomment-1019483264) (2022-01-23) | Maintainer says remaster packages can be built manually but warns that subsequent patch construction is problematic. | Evaluate remaster-aware builders against **patchability** as well as build success; do not suggest falsifying metadata to force a regular base build. |
+
+### Issue/PR verification checklist
+
+Before promoting an issue report to a recommendation, inspect the **original body and follow-up comments**; for a proposed fix verify whether the PR was merged, which releases contain it, the game/CUSA tested, and the highest outcome stage demonstrated. In each guide mark `applies directly to this CUSA`, `same title, CUSA unknown`, or `general diagnostic only`. A locally patched build is not a released fix. Do not repeat identical source catalogs in every guide.
+
+## Targeted supplementary-source audit — 2026-11-21
+
+The following sources are **diagnostic references**, not evidence of a successful ItemzFlow dump or working reinstall for any of the 18 tracked CUSA IDs. Apply [scoped elimination rules](ELIMINATION-WORKFLOW.md): match stage, CUSA, versions, conditions, and later fixes before excluding a configuration.
+
+| Source | Use in failure-first research | Evidence boundary |
+|---|---|---|
+| [Al-Azif dumper-testing](https://github.com/Al-Azif/dumper-testing) | Investigate incomplete installations, missing language/disc assets, dumper hangs, and historical implementation limitations | Upstream/general behavior; not CUSA07408 proof or proof a fix shipped in ItemzFlow |
+| [OpenOrbis LibOrbisPkg](https://github.com/OpenOrbis/LibOrbisPkg) | Package builder implementation, metadata and GP4 handling; compare with [maxton LibOrbisPkg](https://github.com/maxton/LibOrbisPkg) | A builder capability is not a validated game-specific PKG |
+| [LibOrbisPkg PKG Information](https://github.com/maxton/LibOrbisPkg/wiki/PKG-Information) | Inspect PKG structure and metadata when distinguishing extraction from build errors | Reference material, not a console test |
+| [PSDevWiki PKG files](https://www.psdevwiki.com/ps4/PKG_files) | Package/PFS format diagnostics | Reference material, not game-specific outcome evidence |
+| [ShadPKG repository](https://github.com/seregonwar/ShadPKG) | Alternative extraction/patch-layout diagnostics and logging | Patch omissions may be intentional; the previously suggested HOWWORKS.md path was not confirmed accessible |
+| [shadPS4 wiki](https://github.com/shadps4-emu/shadPS4/wiki) | Emulator-oriented file/package diagnostics | Emulator compatibility is **never** proof of installation or launch on real PS4 hardware |
+| [ItemzFlow official Discord invite](https://discord.gg/GvzDdx9GTc) | Locate firsthand troubleshooting reports and ask for logs/versions | Message history **not audited**; no Discord-specific claim verified |
+
+### Concrete upstream packaging issues worth checking
+
+| Direct report | Stage / reported failure | Scoped research action |
+|---|---|---|
+| [OpenOrbis LibOrbisPkg #26](https://github.com/OpenOrbis/LibOrbisPkg/issues/26) | Reported PlayGo chunk-hash allocation exception during package building | **Builder-stage diagnostic only.** Check exact builder revision, PlayGo metadata, comments and fixes before repeating matching build; does not eliminate ItemzFlow dumping |
+| [OpenOrbis LibOrbisPkg #7](https://github.com/OpenOrbis/LibOrbisPkg/issues/7) | Reported duplicate `sc0` entries / trophy-metadata structure concerns | **Packaging/metadata diagnostic only.** Investigate sc0 layout and validation errors; does not establish cause of The Forest or Crash trophy errors |
+
+### Implications for tracked games
+
+- **God of War CUSA07408:** Al-Azif's general missing-language/disc-data behavior strengthens the *diagnostic hypothesis* from [ItemzFlow #142](https://github.com/LightningMods/Itemzflow/issues/142), but neither establishes a CUSA07408 failure or a released fix.
+- **The Forest CUSA10518 / Crash CUSA07402:** The LibOrbisPkg issue reports supply builder-stage investigation leads for trophy/sc0 and PlayGo problems. They are **not confirmed fixes or matching-CUSA failures**.
+- **Jak 3 CUSA07841 / Days Gone CUSA08966:** Package-format references may help identify builder compatibility, but no new metadata-preserving PS2 Classic build or remaster-aware CUSA08966 reinstall was demonstrated.
+- **Other tracked titles:** No new exact-CUSA method exclusions established by this source audit. **All 18 console-reinstall success statuses remain Not verified.**
+
+**Follow-up audit standard:** Read the issue body, comments, linked commits, closure and release notes before describing a workaround as fixed. Log the exact builder/version, error and stage. Do not copy an issue's diagnosis to a different game without matching evidence.

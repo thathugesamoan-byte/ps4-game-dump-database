@@ -14,7 +14,7 @@
 - **Package structure and target firmware:** Unknown
 
 ## Preferred ItemzFlow settings
-- **Exact menu option:** Unknown (Dump All / Dump All + GP4FV / Dump Base Game Only / Dump Patch Only / Dump Remaster Only / Dump DLC Only)
+- **Exact menu option:** Unknown (Dump All / Dump all + GP4FV / Dump Base Game Only / Dump Patch Only / Dump Remaster Only / Dump DLC Only)
 - **Update retail game before dumping?:** Unknown (Yes / No / Conditional / Unknown)
 - **Recommended retail update version:** Unknown
 - **Version and firmware compatibility evidence:** Unknown
@@ -61,3 +61,17 @@
 ## Ranked methods and negative evidence
 
 Follow [the evidence-based elimination workflow](../docs/ELIMINATION-WORKFLOW.md). For each game, distinguish **TRY FIRST**, **FALLBACK**, **AVOID** (with exact tested conditions), and **UNRESOLVED**. Lack of a documented success is **not** proof of failure. A failed packaging configuration must not be used to rule out an ItemzFlow dumping mode. Update the decision and source evidence after each relevant test or firsthand report.
+
+## Failure-first elimination ledger (required even if no successes are documented)
+
+| Source / report date | Scope and tested versions | Stage and exact failure | Fix/retest status | Decision and fallback |
+|---|---|---|---|---|
+| No applicable report located / Unknown | Exact CUSA, edition, patch, firmware, dumper mode/version, builder/version or Unknown | Dump / GP4 / build / static validation / install / launch; observed error or Unknown | Released fix / local-only patch / unresolved / Unknown | ELIMINATE (matching conditions) / CONDITIONAL AVOID / CAUTION / UNTESTED; next viable option |
+
+**Do not infer a failure from missing success reports.** A failure of one packaging configuration does not invalidate the dumped files or all ItemzFlow modes. Record exact matching conditions and any subsequent fix before excluding a method. When no reinstall is proven, choose a clearly **PROVISIONAL** `TRY FIRST` from the non-eliminated candidates, with a specific error-triggered `FALLBACK` and the next evidence needed. See [ELIMINATION-WORKFLOW.md](../docs/ELIMINATION-WORKFLOW.md).
+
+
+## Exact ItemzFlow menu labels (operator-confirmed)
+
+Use only these strings when naming a selectable mode: `Dump All`; `Dump all + GP4FV`; `Dump Base Game Only`; `Dump Patch Only`; `Dump Remaster Only`; `Dump DLC Only`. When two operations are required, list them as two separately selected options. Do not invent a combined option such as “Separate base + patch.”
+
