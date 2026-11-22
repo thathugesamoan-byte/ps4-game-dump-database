@@ -1,0 +1,135 @@
+name: Game Dump / Repackaging Report
+description: Submit a successful or unsuccessful dump, PKG build, PS4 install/launch result, workaround, or correction.
+title: "[Report] CUSAxxxxx - Game Title"
+labels: ["game-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for sharing your real-world test results! Both **successes and failures** help reduce trial and error for other users.
+
+        **Privacy & Copyright Warning:** Before submitting, please remove personal information, usernames, local file paths, credentials, console identifiers, and any copyrighted game files or piracy links from logs and screenshots.
+
+        Leave any unknown field blank or write `Unknown`—never guess.
+
+  - type: dropdown
+    id: report_type
+    attributes:
+      label: Report type
+      description: What kind of finding are you submitting?
+      options:
+        - Successful game dump
+        - Unsuccessful game dump
+        - Successful PKG build
+        - Unsuccessful PKG build
+        - Successful PS4 installation and launch
+        - Unsuccessful PS4 installation or launch
+        - Workaround or troubleshooting finding
+        - Correction to an existing guide
+    validations:
+      required: true
+
+  - type: input
+    id: game_title
+    attributes:
+      label: Game title
+      description: Official title and edition (if relevant, e.g., Complete Edition, GOTY).
+      placeholder: "e.g., Days Gone"
+    validations:
+      required: true
+
+  - type: input
+    id: cusa_id
+    attributes:
+      label: CUSA ID
+      description: 5-digit Sony PS4 Title ID (CUSA followed by 5 digits).
+      placeholder: "e.g., CUSA08966"
+    validations:
+      required: true
+
+  - type: input
+    id: ps4_firmware
+    attributes:
+      label: PS4 firmware (optional)
+      description: Console system software version and payload/GoldHEN version, if known.
+      placeholder: "e.g., FW 9.00 / 11.00 / 14.02 (GoldHEN)"
+    validations:
+      required: false
+
+  - type: input
+    id: itemzflow_version_mode
+    attributes:
+      label: ItemzFlow version and dumping mode (optional)
+      description: Exact ItemzFlow version and menu option used (e.g., Dump All, Dump Base Game Only, Dump Patch Only, Dump Remaster Only, Dump DLC Only, Dump All + GP4FV).
+      placeholder: "e.g., ItemzFlow 1.08 — Dump Base Game Only"
+    validations:
+      required: false
+
+  - type: input
+    id: installed_update
+    attributes:
+      label: Installed game update / DLC (optional)
+      description: Retail patch version installed before dumping (if any) and whether DLC was present.
+      placeholder: "e.g., v01.07 retail update installed, no DLC"
+    validations:
+      required: false
+
+  - type: input
+    id: repackaging_tool
+    attributes:
+      label: Repackaging tool and version (optional)
+      description: Tool used to build or validate the PKG, if you reached that stage.
+      placeholder: "e.g., CyB1K Fake PKG Tools 3.87 V7 / LibOrbisPkg v0.2 / unified-fpkger"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Success or failure stage
+      description: Which stage does this report cover? (Dumping, PKG build, static validation, and PS4 install/launch are tracked separately.)
+      options:
+        - Dumping (ItemzFlow)
+        - Transfer / Inspection
+        - Repackaging (GP4 / PKG build)
+        - Static package validation
+        - PS4 installation
+        - PS4 launch / gameplay
+        - Documentation / metadata correction
+    validations:
+      required: true
+
+  - type: textarea
+    id: error_messages
+    attributes:
+      label: Relevant error messages (optional)
+      description: Exact error text from ItemzFlow, dumper logs, or packaging/validation tools (redacted of personal paths/IDs).
+      placeholder: "Paste exact error text here..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps performed and observed outcome
+      description: Briefly describe what you did and what actually happened (including any workaround that worked or failed).
+      placeholder: "1. Installed base game...\n2. Ran ItemzFlow...\n3. Observed..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting logs, screenshots, or source links (optional)
+      description: Links to GitHub issues, Reddit threads, or redacted logs/screenshots.
+      placeholder: "https://..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: privacy_check
+    attributes:
+      label: Privacy and copyright confirmation
+      options:
+        - label: I have removed personal information, credentials, console identifiers, and copyrighted game data from my submission.
+          required: true
